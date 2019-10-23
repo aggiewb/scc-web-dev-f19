@@ -3,20 +3,93 @@
     <head>
         <title>Assignment 5: Forms</title>
         <style>
+            body {
+                background-color:#CCF5AC;
+            }
+
+            p {
+                color:#FFE66D;
+            }
+
+            h1, #instructions  {
+                color:#1A535C;
+                font-family: 'Roboto Mono', monospace;
+            }
+
+            h1{
+                width: 300px;
+                text-align: center;
+            }
+
+            fieldset {
+                width: 600px;
+                background-color:#1A535C;
+                color:#CCF5AC;
+                font-family: 'Lato', sans-serif;
+                margin-bottom: 10px;
+            }
+
+            #submit {
+                font-family: 'Lato', sans-serif;
+                font-size: 30px;
+                margin: 20px;
+            }
         </style>
     </head>
     <body>
         <h1>Weekly Lunch Form</h1>
-        <p>Fill out this form before 5pm to order next day lunch delivery to your workspace location.</p>
-        <form>
+        <p id="instructions">Fill out this form before 5pm to order next day lunch delivery to your workspace location at 12pm.</p>
+        <form action="_blank" method="post">
             <fieldset>
+                <div id="person_info">
                 <label id="firstname">First Name:</label>
-                <input type="text" id="firstname" required="required"><br>
+                <input type="text" id="firstname" required="required" placeholder="Jane"><br>
                 <label id="lastname">Last Name:</label>
-                <input id="lastname" type="text" required="required"><br>
-                <label id="employeeid">EmployeeID</label>
-                <input id="employeeid" type="number" min="00000" max="99999">
+                <input id="lastname" type="text" required="required" placeholder="Doe"><br>
+                <label id="email">Email Address:</label>
+                <input id="email" type="email" required="required" placeholder="jane.doe@example.com"><br>
+                <label id="location">Location:</label>
+                <input id="location" type="text" required="required" placeholder="Office 123">
+                </div>
+                <p>Select the sandwich you'd like:</p>
+                <div>
+                    <input id="turkey" type="radio" name="sandwich" value="turkey">
+                    <label for="turkey">Turkey</label><br>
+                    <input id="roast_beef" type="radio" name="sandwich" value="roast_beef">
+                    <label for="roast_beef">Roast Beef</label><br>
+                    <input id="ham" type="radio" name="sandwich" value="ham">
+                    <label for="ham">Ham</label><br>
+                </div>
+                <p>Select all of the condiments you'd like on your sandwich:</p>
+                <div>
+                    <input id="mayo" type="checkbox" name="mayo">
+                    <label for="mayo">Mayo</label><br>
+                    <input id="mustard" type="checkbox" name="mustard">
+                    <label for="mustard">Mustard</label><br>
+                    <input id="guacamole" type="checkbox" name="checkbox">
+                    <label for="guacamole">Guacamole</label><br>
+                </div>
+                <p>Select all the toppings you'd like on your sandwich:</p>
+                <div>
+                    <input id="lettuce" type="checkbox" name="lettuce">
+                    <label for="lettuce">Lettuce</label><br>
+                    <input id="tomato" type="checkbox" name="tomato">
+                    <label for="tomato">Tomato</label><br>
+                    <input id="onion" type="checkbox" name="onion">
+                    <label for="onion">Onion</label><br>
+                </div>
+                <p>Select the chips you'd like:</p>
+                <div>
+                    <input id="bbq" type="radio" name="chips" value="bbq">
+                    <label for="bbq">BBQ</label><br>
+                    <input id="sour_cream" type="radio" name="chips" value="sour_cream">
+                    <label for="sour_cream">Sour Cream</label><br>
+                    <input id="salt_vinegar" type="radio" name="chips" value="salt_vinegar">
+                    <label for="salt_vinegar">Salt and Vinegar</label><br>
+                </div>
+                <input id="submit" type="submit" value="Submit">  
             </fieldset>
         </form>
+        <a href="_blank"><img src="pictures/htmlvalidator.png" alt="An icon representing an html validator" width="100px"></a> 
     </body>
 </html>
