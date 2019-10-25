@@ -8,16 +8,29 @@ Aggie Wheeler Bateman
 10/24/19
 '''
 
-#Returns the sum of the first n natural numbers
+import math
 
 def sumN(n):
     sum = 0
     for i in range(1, n+1):
         sum += i
-    print(sum)
+    print("The sum of the first natural numbers of " + str(n) + " is " + str(int(sum)) + ".")
+
+def sumNCubes(n):
+    sumCube = 0
+    for i in range(1, n+1):
+        sumCube += math.pow(n,3)
+    print("The sum of the cubes of the first natural numbers of " + str(n) + " is " + str(int(sumCube)) + ".")
+
+def getNum():
+    n = int(input("Enter the number that you'd like the sum of the first natural numbers and the sum of the cubes of the first natural numbers: "))
+    sumN(n)
+    sumNCubes(n)
+
+getNum()
     
 
-sumN(4)
+
         
     
 
