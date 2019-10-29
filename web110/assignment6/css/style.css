@@ -1,0 +1,25 @@
+body {
+    background-color:#2D2D2D;
+}
+
+h1, h2 {
+    color:#11F772;
+    font-family: 'Josefin Sans', sans-serif; 
+}
+
+h1 {
+    font-size: 60px;
+    border: solid 10px #11F772;
+    width: 600px;
+    text-align: center;
+}
+
+h2 {
+    font-size: 30px;
+}
+
+p, ul {
+    color:#DFD6A7;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+}
