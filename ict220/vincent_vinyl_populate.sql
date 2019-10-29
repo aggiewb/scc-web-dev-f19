@@ -1,0 +1,1 @@
+albumidAlbumpricepriceSELECT * FROM vincent_vinyl.album;
