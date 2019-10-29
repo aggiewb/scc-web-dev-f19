@@ -1,0 +1,332 @@
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+-- -----------------------------------------------------
+-- Schema Vincent_Vinyl
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema Vincent_Vinyl
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `Vincent_Vinyl` DEFAULT CHARACTER SET utf8 ;
+USE `Vincent_Vinyl` ;
+
+-- -----------------------------------------------------
+-- Table `Vincent_Vinyl`.`Person`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `Vincent_Vinyl`.`Person` (
+  `idPerson` INT NOT NULL AUTO_INCREMENT,
+  `LastName` VARCHAR(45) NOT NULL,
+  `FirstName` VARCHAR(45) NOT NULL,
+  `Email` VARCHAR(45) NOT NULL,
+  `DateAdded` DATE NOT NULL,
+  `PhoneNumber` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`idPerson`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `Vincent_Vinyl`.`Customer`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `Vincent_Vinyl`.`Customer` (
+  `idCustomer` INT NOT NULL AUTO_INCREMENT,
+  `AlbumPurchased` VARCHAR(45) NOT NULL,
+  `DiscountPoint` DECIMAL NOT NULL,
+  `Newsletter` VARCHAR(45) NOT NULL,
+  `idPerson` INT NOT NULL,
+  PRIMARY KEY (`idCustomer`),
+  INDEX `fk_Customer_Person1_idx` (`idPerson` ASC) VISIBLE,
+  CONSTRAINT `fk_Customer_Person1`
+    FOREIGN KEY (`idPerson`)
+    REFERENCES `Vincent_Vinyl`.`Person` (`idPerson`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `Vincent_Vinyl`.`Quality`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `Vincent_Vinyl`.`Quality` (
+  `idQuality` INT NOT NULL AUTO_INCREMENT,
+  `Quality` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`idQuality`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `Vincent_Vinyl`.`Status`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `Vincent_Vinyl`.`Status` (
+  `idStatus` INT NOT NULL,
+  `Status` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`idStatus`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `Vincent_Vinyl`.`Inventory`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `Vincent_Vinyl`.`Inventory` (
+  `idInventory` INT NOT NULL AUTO_INCREMENT,
+  `DatePurchased` VARCHAR(45) NOT NULL,
+  `idPrice` INT NOT NULL,
+  `idAlbum` INT NOT NULL,
+  `idQuality` INT NOT NULL,
+  `idStatus` INT NOT NULL,
+  PRIMARY KEY (`idInventory`),
+  INDEX `fk_Inventory_Album1_idx` (`idAlbum` ASC) VISIBLE,
+  INDEX `fk_Inventory_Quality1_idx` (`idQuality` ASC) VISIBLE,
+  INDEX `fk_Inventory_Status1_idx` (`idStatus` ASC) VISIBLE,
+  CONSTRAINT `fk_Inventory_Album1`
+    FOREIGN KEY (`idAlbum`)
+    REFERENCES `Vincent_Vinyl`.`Album` (`idAlbum`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Inventory_Quality1`
+    FOREIGN KEY (`idQuality`)
+    REFERENCES `Vincent_Vinyl`.`Quality` (`idQuality`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Inventory_Status1`
+    FOREIGN KEY (`idStatus`)
+    REFERENCES `Vincent_Vinyl`.`Status` (`idStatus`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `Vincent_Vinyl`.`Price`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `Vincent_Vinyl`.`Price` (
+  `idPrice` INT NOT NULL AUTO_INCREMENT,
+  `Purchased` DECIMAL NOT NULL,
+  `Base` DECIMAL NOT NULL,
+  `PriceVarient` VARCHAR(45) NOT NULL,
+  `idInventory` INT NOT NULL,
+  PRIMARY KEY (`idPrice`),
+  INDEX `fk_Price_Inventory1_idx` (`idInventory` ASC) VISIBLE,
+  CONSTRAINT `fk_Price_Inventory1`
+    FOREIGN KEY (`idInventory`)
+    REFERENCES `Vincent_Vinyl`.`Inventory` (`idInventory`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `Vincent_Vinyl`.`Album`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `Vincent_Vinyl`.`Album` (
+  `idAlbum` INT NOT NULL AUTO_INCREMENT,
+  `Name` VARCHAR(45) NOT NULL,
+  `YearReleased` INT NOT NULL,
+  `Rating` VARCHAR(45) NOT NULL,
+  `RecordLabel` VARCHAR(45) NOT NULL,
+  `idPrice` INT NOT NULL,
+  PRIMARY KEY (`idAlbum`),
+  INDEX `fk_Album_Price1_idx` (`idPrice` ASC) VISIBLE,
+  CONSTRAINT `fk_Album_Price1`
+    FOREIGN KEY (`idPrice`)
+    REFERENCES `Vincent_Vinyl`.`Price` (`idPrice`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `Vincent_Vinyl`.`Employee`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `Vincent_Vinyl`.`Employee` (
+  `idEmployee` INT NOT NULL AUTO_INCREMENT,
+  `idPerson` INT NOT NULL,
+  PRIMARY KEY (`idEmployee`),
+  INDEX `fk_Employee_Person_idx` (`idPerson` ASC) VISIBLE,
+  CONSTRAINT `fk_Employee_Person`
+    FOREIGN KEY (`idPerson`)
+    REFERENCES `Vincent_Vinyl`.`Person` (`idPerson`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `Vincent_Vinyl`.`PurchaserAlbum`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `Vincent_Vinyl`.`PurchaserAlbum` (
+  `idPurchaser` INT NOT NULL AUTO_INCREMENT,
+  `idPerson` INT NOT NULL,
+  PRIMARY KEY (`idPurchaser`),
+  INDEX `fk_Purchaser_Person1_idx` (`idPerson` ASC) VISIBLE,
+  CONSTRAINT `fk_Purchaser_Person1`
+    FOREIGN KEY (`idPerson`)
+    REFERENCES `Vincent_Vinyl`.`Person` (`idPerson`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `Vincent_Vinyl`.`AlbumRequest`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `Vincent_Vinyl`.`AlbumRequest` (
+  `idAlbumRequest` INT NOT NULL AUTO_INCREMENT,
+  `idCustomer` INT NOT NULL,
+  `idAlbum` INT NOT NULL,
+  PRIMARY KEY (`idAlbumRequest`),
+  INDEX `fk_AlbumRequest_Customer1_idx` (`idCustomer` ASC) VISIBLE,
+  INDEX `fk_AlbumRequest_Album1_idx` (`idAlbum` ASC) VISIBLE,
+  CONSTRAINT `fk_AlbumRequest_Customer1`
+    FOREIGN KEY (`idCustomer`)
+    REFERENCES `Vincent_Vinyl`.`Customer` (`idCustomer`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_AlbumRequest_Album1`
+    FOREIGN KEY (`idAlbum`)
+    REFERENCES `Vincent_Vinyl`.`Album` (`idAlbum`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `Vincent_Vinyl`.`Sale`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `Vincent_Vinyl`.`Sale` (
+  `idSale` INT NOT NULL AUTO_INCREMENT,
+  `DateTime` DATETIME NOT NULL,
+  `idCustomer` INT NOT NULL,
+  `idEmployee` INT NOT NULL,
+  PRIMARY KEY (`idSale`),
+  INDEX `fk_Sale_Customer1_idx` (`idCustomer` ASC) VISIBLE,
+  INDEX `fk_Sale_Employee1_idx` (`idEmployee` ASC) VISIBLE,
+  CONSTRAINT `fk_Sale_Customer1`
+    FOREIGN KEY (`idCustomer`)
+    REFERENCES `Vincent_Vinyl`.`Customer` (`idCustomer`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Sale_Employee1`
+    FOREIGN KEY (`idEmployee`)
+    REFERENCES `Vincent_Vinyl`.`Employee` (`idEmployee`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `Vincent_Vinyl`.`Genre`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `Vincent_Vinyl`.`Genre` (
+  `idGenre` INT NOT NULL AUTO_INCREMENT,
+  `Genre` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`idGenre`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `Vincent_Vinyl`.`Artist`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `Vincent_Vinyl`.`Artist` (
+  `idArtist` INT NOT NULL AUTO_INCREMENT,
+  `Artist` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`idArtist`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `Vincent_Vinyl`.`Album_has_Artist`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `Vincent_Vinyl`.`Album_has_Artist` (
+  `idAlbum` INT NOT NULL,
+  `idArtist` INT NOT NULL,
+  PRIMARY KEY (`idAlbum`, `idArtist`),
+  INDEX `fk_Album_has_Artist_Artist1_idx` (`idArtist` ASC) VISIBLE,
+  INDEX `fk_Album_has_Artist_Album1_idx` (`idAlbum` ASC) VISIBLE,
+  CONSTRAINT `fk_Album_has_Artist_Album1`
+    FOREIGN KEY (`idAlbum`)
+    REFERENCES `Vincent_Vinyl`.`Album` (`idAlbum`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Album_has_Artist_Artist1`
+    FOREIGN KEY (`idArtist`)
+    REFERENCES `Vincent_Vinyl`.`Artist` (`idArtist`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `Vincent_Vinyl`.`Album_has_Genre`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `Vincent_Vinyl`.`Album_has_Genre` (
+  `idAlbum` INT NOT NULL,
+  `idGenre` INT NOT NULL,
+  PRIMARY KEY (`idAlbum`, `idGenre`),
+  INDEX `fk_Album_has_Genre_Genre1_idx` (`idGenre` ASC) VISIBLE,
+  INDEX `fk_Album_has_Genre_Album1_idx` (`idAlbum` ASC) VISIBLE,
+  CONSTRAINT `fk_Album_has_Genre_Album1`
+    FOREIGN KEY (`idAlbum`)
+    REFERENCES `Vincent_Vinyl`.`Album` (`idAlbum`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Album_has_Genre_Genre1`
+    FOREIGN KEY (`idGenre`)
+    REFERENCES `Vincent_Vinyl`.`Genre` (`idGenre`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `Vincent_Vinyl`.`PurchaserAlbum_has_Album`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `Vincent_Vinyl`.`PurchaserAlbum_has_Album` (
+  `idPurchaser` INT NOT NULL,
+  `idAlbum` INT NOT NULL,
+  PRIMARY KEY (`idPurchaser`, `idAlbum`),
+  INDEX `fk_PurchaserAlbum_has_Album_Album1_idx` (`idAlbum` ASC) VISIBLE,
+  INDEX `fk_PurchaserAlbum_has_Album_PurchaserAlbum1_idx` (`idPurchaser` ASC) VISIBLE,
+  CONSTRAINT `fk_PurchaserAlbum_has_Album_PurchaserAlbum1`
+    FOREIGN KEY (`idPurchaser`)
+    REFERENCES `Vincent_Vinyl`.`PurchaserAlbum` (`idPurchaser`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_PurchaserAlbum_has_Album_Album1`
+    FOREIGN KEY (`idAlbum`)
+    REFERENCES `Vincent_Vinyl`.`Album` (`idAlbum`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `Vincent_Vinyl`.`SaleDetail`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `Vincent_Vinyl`.`SaleDetail` (
+  `idSaleDetail` INT NOT NULL AUTO_INCREMENT,
+  `SoldPrice` VARCHAR(45) NOT NULL,
+  `idSale` INT NOT NULL,
+  `idInventory` INT NOT NULL,
+  PRIMARY KEY (`idSaleDetail`),
+  INDEX `fk_SaleDetail_Sale1_idx` (`idSale` ASC) VISIBLE,
+  INDEX `fk_SaleDetail_Inventory1_idx` (`idInventory` ASC) VISIBLE,
+  CONSTRAINT `fk_SaleDetail_Sale1`
+    FOREIGN KEY (`idSale`)
+    REFERENCES `Vincent_Vinyl`.`Sale` (`idSale`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_SaleDetail_Inventory1`
+    FOREIGN KEY (`idInventory`)
+    REFERENCES `Vincent_Vinyl`.`Inventory` (`idInventory`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
