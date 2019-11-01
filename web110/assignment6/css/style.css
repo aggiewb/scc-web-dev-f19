@@ -40,8 +40,12 @@ p, ul {
 
 }
 
-img, h1{
+.navbaricon, h1{
     border: solid 6px #11F772;
+}
+
+.pagedecoration {
+    height: 350px;
 }
 
 
