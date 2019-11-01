@@ -1,5 +1,5 @@
 body {
-    background-color:#2D2D2D;
+    background-color:#474747;
 }
 
 h1, h2 {
@@ -9,7 +9,6 @@ h1, h2 {
 
 h1 {
     font-size: 60px;
-    border: solid 10px #11F772;
     width: 600px;
     text-align: center;
 }
@@ -23,6 +22,27 @@ p, ul {
     font-family: 'Montserrat', sans-serif;
     font-size: 18px;
 }
+
+.navbar {
+    list-style-type: none;
+}
+
+/* space between the parent and child will target children only of the parent */
+.navbar li{
+    display: inline;
+    font-size: 35px;
+    border-right: #11F772 solid 5px;
+    padding-right: 10px;
+
+}
+
+img, h1 {
+    border: solid 6px #11F772;
+}
+
+
+
+
 
 
 
