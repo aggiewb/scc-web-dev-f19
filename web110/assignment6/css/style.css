@@ -2,7 +2,7 @@ body {
     background-color:#474747;
 }
 
-h1, h2, a {
+h1, h2, a, h3 {
     color:#11F772;
     font-family: 'Josefin Sans', sans-serif; 
 }
@@ -12,13 +12,20 @@ a:hover {
 }
 
 h1 {
-    font-size: 60px;
-    width: 600px;
-    text-align: center;
+    font-size: 45px;
 }
 
 h2 {
-    font-size: 30px;
+    font-size: 35px;
+}
+
+h3 {
+    font-size: 25px;
+}
+
+h1, h2, .navbar {
+    text-align: center;
+    width: 600px;
 }
 
 p, ul {
@@ -35,17 +42,20 @@ p, ul {
 .navbar li{
     display: inline;
     font-size: 35px;
-    border-right: #11F772 solid 5px;
+    border-right: white solid 5px;
     padding-right: 10px;
-
 }
 
-.navbaricon, h1{
+h1{
     border: solid 6px #11F772;
 }
 
 .pagedecoration {
     height: 350px;
+}
+
+.htmlval {
+    margin-top: 40px;
 }
 
 
