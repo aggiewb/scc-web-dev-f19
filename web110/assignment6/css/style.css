@@ -23,15 +23,27 @@ h3 {
     font-size: 25px;
 }
 
-h1, h2, .navbar {
+h1, .navbar {
     text-align: center;
     width: 600px;
 }
 
-p, ul {
+p, ul, fieldset {
     color:#DFD6A7;
     font-family: 'Montserrat', sans-serif;
     font-size: 18px;
+}
+
+label {
+    display: block;
+}
+
+fieldset {
+    border: none;
+}
+
+button {
+    font-size: 16px;
 }
 
 .navbar {
