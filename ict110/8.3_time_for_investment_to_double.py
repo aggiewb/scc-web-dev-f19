@@ -8,3 +8,8 @@ Aggie Wheeler Bateman
 
 11/7/19
 '''
+
+def getRate():
+    rate = float(input("Please enter the annualized interest rate: "))
+    initInvest = float(input("Please enter your initial invesment amount: "))
+    return rate, initInvest
