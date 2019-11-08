@@ -10,6 +10,24 @@ Aggie Wheeler Bateman
 '''
 
 def getRate():
-    rate = float(input("Please enter the annualized interest rate: "))
-    initInvest = float(input("Please enter your initial invesment amount: "))
-    return rate, initInvest
+    return float(input("Please enter the annualized interest rate: "))
+
+def getInitInvest():
+     return float(input("Please enter your initial invesment amount: "))
+     
+def calInvestment():
+    initialInvest = getInitInvest()
+    annualRate = getRate()
+
+    investment = initialInvest
+    count = 0
+
+    while (investment / initialInvest) < 2:
+        investment += ((annualRate/100) * investment)
+        count += 1
+
+    print("The amount of time it will take you to double your investment is", count, "years.")
+    print("You will have earned ${0:0.2f} in that amount of time.".format(investment))
+
+
+calInvestment()
