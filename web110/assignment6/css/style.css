@@ -56,7 +56,6 @@ button {
 .navbar {
     list-style-type: none;
     padding: 0;
-    width: 60x;
 }
 
 /* space between the parent and child will target children only of the parent */
