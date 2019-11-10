@@ -9,6 +9,7 @@ h1, h2, a, h3 {
 
 h1 {
     font-size: 45px;
+    text-shadow: 2px 2px cornsilk;
 }
 
 h2 {
@@ -91,15 +92,19 @@ h1{
 .val {
     margin-top: 40px;
     height: 100px;
+    padding: 10px;
+    background-color: cornsilk;
+    box-shadow: 10px 10px #11F772;
+    margin: 20px;
 }
 
-#valflex {
+.valflex {
     display: flex;
     flex-direction: row;
 }
 
-.menu, h1 {
-    border-radius: 10px; 
+.menu, h1, .val, .navbar li a{
+    border-radius: 6px; 
 }
 
 
