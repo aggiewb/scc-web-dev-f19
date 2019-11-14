@@ -57,8 +57,10 @@ class Tip():
         print("The tax amount is" + taxAmount() + ".")
         print("The total cost is" + totalCost + ".")
 
-
-
+def getInput():
+    charge = float(input("Please enter the charge without tax and tip: "))
+    percentTip =float(input("Please enter the tip percent you'd like to give: "))
+    taxRate =(float(input("Please enter the sales tax rate in your area: "))
 
 
     
