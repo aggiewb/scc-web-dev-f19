@@ -11,9 +11,9 @@ Aggie Wheeler Bateman
 
 class Tip():
     def __init__(self, charge, percentTip, taxRate):
-        self.charge = float(charge)
-        self.percentTip = float(percentTip)
-        self.taxRate = float(taxRate)
+        self.charge = float(0)
+        self.percentTip = float(0)
+        self.taxRate = float(0)
 
     @property
     def charge(self):
@@ -59,23 +59,18 @@ class Tip():
 
 def getInput():
     charge = float(input("Please enter the charge without tax and tip: "))
-    percentTip =float(input("Please enter the tip percent you'd like to give: "))
-    taxRate =(float(input("Please enter the sales tax rate in your area: "))
+    percentTip = float(input("Please enter the tip percent you'd like to give: "))
+    taxRate = float(input("Please enter the sales tax rate in your area: "))
+    return charge, percentTip, taxRate
+              
 
+def main():
+    charge, percentTip, taxRate = getInput()
+    Tip.charge = charge
+    Tip.percentTip = percentTip
+    Tip.taxRate = taxRate
 
+main()
     
 
 
-        
-
-    
-
-
-    
-
-    
-        
-
-        
-        
-        
