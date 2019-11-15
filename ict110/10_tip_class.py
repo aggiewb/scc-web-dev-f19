@@ -22,6 +22,15 @@ class Tip():
         print("The tip amount is ${0:0.2f}.".format(tipAmount))
         print("The tax amount is ${0:0.2f}.".format(taxAmount))
         print("The total cost is ${0:0.2f}.".format(totalCost))
+
+    def getCharge(self):
+        return self.charge
+
+    def getPercentTip(self):
+        return self.percentTip
+
+    def getTaxRate(self):
+        return self.taxRate
                    
 def getInput():
     charge = float(input("Please enter the charge without tax and tip: "))
@@ -33,6 +42,9 @@ def main():
     charge, percentTip, taxRate = getInput()
     c1= Tip(charge,percentTip,taxRate)
     c1.totalCost()
+    print("Your stated charge amount is ${0:0.2f}.".format(c1.getCharge()))
+    print("Your stated tip percent is {0}%.".format(c1.getTaxRate()))
+    print("Your stated tax rate is {0}%.".format(c1.getTaxRate()))
 
 main()
     
