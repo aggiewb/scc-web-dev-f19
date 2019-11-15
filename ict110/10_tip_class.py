@@ -40,11 +40,11 @@ def getInput():
               
 def main():
     charge, percentTip, taxRate = getInput()
-    c1= Tip(charge,percentTip,taxRate)
-    c1.totalCost()
-    print("Your stated charge amount is ${0:0.2f}.".format(c1.getCharge()))
-    print("Your stated tip percent is {0}%.".format(c1.getTaxRate()))
-    print("Your stated tax rate is {0}%.".format(c1.getTaxRate()))
+    charge1= Tip(charge,percentTip,taxRate)
+    charge1.totalCost()
+    print("Your stated charge amount is ${0:0.2f}.".format(charge1.getCharge()))
+    print("Your stated tip percent is {0:.0f}%.".format(charge1.getTaxRate()))
+    print("Your stated tax rate is {0:.0f}%.".format(charge1.getTaxRate()))
 
 main()
     
