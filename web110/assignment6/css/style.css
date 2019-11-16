@@ -84,10 +84,14 @@ button {
     background-color: cornsilk;
 }
 
-.navbar li a:active, .navbarli a:visited {
+.navbar li a:active {
     background-color: #f0da2f;
 }
 
+/* Currently none of the html pages have an element that will be affected by this selector */
+a:visited {
+    color: #fdaf;
+}
 
 h1{
     padding: 5px;
