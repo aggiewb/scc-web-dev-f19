@@ -8,11 +8,11 @@ h1, h2, a, h3 {
 }
 
 h1 {
-    font-size: 45px;
+    font-size: 55px;
 }
 
 h2 {
-    font-size: 35px;
+    font-size: 45px;
 }
 
 h1, h2 {
@@ -20,7 +20,7 @@ h1, h2 {
 }
 
 h3 {
-    font-size: 25px;
+    font-size: 35px;
 }
 
 h1, .navbar {
@@ -30,7 +30,7 @@ h1, .navbar {
 
 p, ul, fieldset {
     color:#DFD6A7;
-    font-size: 18px;
+    font-size: 20px;
 }
 
 p, ul {
@@ -50,7 +50,7 @@ fieldset {
 }
 
 button {
-    font-size: 16px;
+    font-size: 20px;
 }
 
 .navbar {
@@ -75,13 +75,18 @@ button {
     background-color: cornsilk;
 }
 
+.navbar li a:active, .navbarli a:visited {
+    background-color: #f0da2f;
+}
+
+
 h1{
     padding: 5px;
     border: solid 4px cornsilk;
 }
 
 .menu {
-    width: 30%;
+    width: 50%;
     padding: 5px;
     margin: 6px;
     border: double 4px cornsilk;
@@ -93,7 +98,7 @@ h1{
 
 .val {
     margin-top: 40px;
-    height: 100px;
+    height: 50px;
     padding: 10px;
     box-shadow: 10px 10px #11F772;
     margin: 20px;
