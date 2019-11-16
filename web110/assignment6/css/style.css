@@ -65,13 +65,12 @@ button {
 
 .navbar {
     list-style-type: none;
-    padding: 0;
 }
 
 /* space between the parent and child will target children only of the parent */
 .navbar li{
-    display: inline;
     font-size: 35px;
+    display: inline;
 }
 
 .navbar li a {
