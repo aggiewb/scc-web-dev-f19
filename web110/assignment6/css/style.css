@@ -53,6 +53,7 @@ fieldset {
 
 label {
     display: block;
+    padding-top: 5px;
 }
 
 fieldset {
@@ -60,7 +61,22 @@ fieldset {
 }
 
 button {
+    font-size: 30px;
+    border-radius: 3px;
+    border: 2px cornsilk solid;
+    margin-top: 10px;
+    background-color: #11F772;
+    color: #474747;
+}
+
+input, textarea {
+    border-radius: 2px;
+    padding: 4px;
     font-size: 20px;
+}
+
+input:focus, textarea:focus {
+    border: 2px solid #11F772;
 }
 
 .navbar {
@@ -80,7 +96,7 @@ button {
     padding: 5px;
 }
 
-.navbar li a:hover, .val {
+.navbar li a:hover, .val, button:hover {
     background-color: cornsilk;
 }
 
