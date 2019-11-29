@@ -61,10 +61,12 @@ fieldset {
 }
 
 button {
-    font-size: 20px;
-    border-radius: 2px;
+    font-size: 30px;
+    border-radius: 3px;
+    border: 2px cornsilk solid;
     margin-top: 10px;
-
+    background-color: #11F772;
+    color: #474747;
 }
 
 input, textarea {
@@ -94,7 +96,7 @@ input:focus, textarea:focus {
     padding: 5px;
 }
 
-.navbar li a:hover, .val {
+.navbar li a:hover, .val, button:hover {
     background-color: cornsilk;
 }
 
