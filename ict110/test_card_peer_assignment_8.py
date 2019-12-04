@@ -5,5 +5,6 @@ def main():
     print (c)
 
     print(c.getRank())
+    print(c.getSuit())
 
 main()
