@@ -6,5 +6,6 @@ def main():
 
     print(c.getRank())
     print(c.getSuit())
+    print(c.setValue())
 
 main()
