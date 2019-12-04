@@ -115,7 +115,8 @@ h1{
 }
 
 .menu {
-    width: auto;
+    width: 500px;
+    height: 250px;
     padding: 5px;
     margin: 6px;
     border: double 4px cornsilk;
@@ -152,7 +153,7 @@ h1{
 
 #grid {
     display: grid;
-    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
 }
 
 #grid-item-1 {
