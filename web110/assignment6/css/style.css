@@ -28,7 +28,7 @@ h1, .navbar {
     width: 600px;
 }
 
-p, table, ul, fieldset {
+p, table, ul, fieldset, footer {
     color:#DFD6A7;
     font-size: 20px;
 }
