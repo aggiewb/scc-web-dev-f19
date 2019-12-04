@@ -28,7 +28,7 @@ h1, .navbar {
     width: 600px;
 }
 
-p, table, ul, fieldset {
+p, table, ul, fieldset, footer {
     color:#DFD6A7;
     font-size: 20px;
 }
@@ -115,7 +115,8 @@ h1{
 }
 
 .menu {
-    width: 50%;
+    width: 500px;
+    height: 250px;
     padding: 5px;
     margin: 6px;
     border: double 4px cornsilk;
@@ -142,12 +143,51 @@ h1{
     border-radius: 6px; 
 }
 
+.menu-align {
+    margin: auto;
+    width: 50%;
+}
+
+@media only screen and (max-width: 1600px) {
+    .menu-align {
+        width: 100%;
+    }
+}
+
 #coming_soon, #coming_soon + p {
     visibility: hidden;
 }
 
 #new_location {
     display: none;
+}
+
+#grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+#grid-item-1 {
+    grid-column: 1;
+}
+
+#grid-item-2 {
+    grid-column: 2;
+}
+
+#grid-item-3 {
+    grid-column: 3;
+}
+
+@media only screen and (max-width: 1600px) {
+    
+    #grid {
+        display: grid;
+    }
+
+    #grid-item-1, #grid-item-2, #grid-item-3 {
+        grid-column: 1;
+    }
 }
 
 
