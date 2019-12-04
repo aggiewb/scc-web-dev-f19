@@ -6,7 +6,7 @@ Aggie Wheeler Bateman
 '''
 
 class Card():
-    #class initialiazation. pass in and set initial values.
+    #class initialiazation. pass in and set initial values
     def __init__(self, rank, suit):
         self.rank = rank
         self.suit = suit
@@ -28,14 +28,14 @@ class Card():
             self.value = self.rank
         return self.value
 
-    #convert sui letter to name
+    #convert suit letter to name
     def getSuit(self):
         self.s = ""
         if self.suit == 'd':
             self.s = 'diamonds'
-        elif self.suit = 'h':
+        elif self.suit == 'h':
             self.s = 'hearts'
-        elif self.suit = 'c':
+        elif self.suit == 'c':
             self.s = 'clubs'
         else:
             self.s = 'spades'
@@ -53,5 +53,5 @@ class Card():
             self.name = "The Queen of " + self.getSuit()
         if self.rank == 13:
             self.name = "The King of " + self.getSuit()
-            return self.name
+        return self.name
             
