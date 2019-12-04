@@ -6,17 +6,21 @@ Aggie Wheeler Bateman
 '''
 
 class Card():
+    #class initialiazation. pass in and set initial values.
     def __init__(self, rank, suit):
         self.rank = rank
         self.suit = suit
         self.value = 0
 
+    #get suit value
     def getSuit(self):
         return self.suit
-
+    
+    #get rank value
     def getRank(self):
         return self.rank
-
+    
+    #set the playing value of card
     def setValue(self):
         if self.rank > 10:
             self.value = 10
@@ -24,6 +28,7 @@ class Card():
             self.value = self.rank
         return self.value
 
+    #convert sui letter to name
     def getSuit(self):
         self.s = ""
         if self.suit == 'd':
@@ -35,7 +40,8 @@ class Card():
         else:
             self.s = 'spades'
         return self.s
-
+    
+    #return a string with the name of the card
     def __str__(self):
         if self.rank > 1 and self.rank < 11:
             self.name = str(self.rank) + " of " + self.getSuit()
