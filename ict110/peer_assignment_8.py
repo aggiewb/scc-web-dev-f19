@@ -54,4 +54,5 @@ class Card():
         if self.rank == 13:
             self.name = "The King of " + self.getSuit()
         return self.name
+
             
